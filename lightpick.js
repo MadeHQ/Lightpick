@@ -34,6 +34,7 @@
         separator: ' - ',
         numberOfMonths: 1,
         numberOfColumns: 2,
+        preventCollapse: false,
         singleDate: true,
         autoclose: true,
         repick: false,
@@ -260,7 +261,7 @@
         return div.outerHTML;
     },
 
-    renderMonthsList = function(date, opts) 
+    renderMonthsList = function(date, opts)
     {
         var d = moment(date),
             select = document.createElement('select');
@@ -280,14 +281,14 @@
         }
 
         select.className = 'lightpick__select lightpick__select-months';
-        
+
         // for text align to right
         select.dir = 'rtl';
 
         if (!opts.dropdowns || !opts.dropdowns.months) {
             select.disabled = true;
         }
-    
+
         return select.outerHTML;
     },
 
@@ -482,7 +483,7 @@
 
         if (opts.parentEl instanceof Node) {
             opts.parentEl.appendChild(self.el)
-        } 
+        }
         else if (opts.parentEl === 'body' && opts.inline) {
             opts.field.parentNode.appendChild(self.el);
         }
@@ -898,7 +899,7 @@
                 opts.locale = Object.assign({}, defaults.locale, options.locale);
             }
 
-            if (window.innerWidth < 480 && opts.numberOfMonths > 1) {
+            if (window.innerWidth < 480 && opts.numberOfMonths > 1 && !opts.preventCollapse) {
                 opts.numberOfMonths = 1;
                 opts.numberOfColumns = 1;
             }
@@ -1211,7 +1212,7 @@
                 }
 
                 this.syncFields();
-                
+
                 if (this._opts.secondField && this._opts.secondField === target && this._opts.endDate) {
                     this.gotoDate(this._opts.endDate);
                 }

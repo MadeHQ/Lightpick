@@ -40,12 +40,12 @@ Lightpick can be bound to an input field:
 Include Lightpick script to the end of your document:
 
 ```html
-<link rel="stylesheet" type="text/css" href="css/lightpick.css">  
-...  
+<link rel="stylesheet" type="text/css" href="css/lightpick.css">
+...
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-<script src="lightpick.js"></script>  
-<script>  
-var picker = new Lightpick({ field: document.getElementById('datepicker') });  
+<script src="lightpick.js"></script>
+<script>
+var picker = new Lightpick({ field: document.getElementById('datepicker') });
 </script>
 ```
 
@@ -55,13 +55,13 @@ var picker = new Lightpick({ field: document.getElementById('datepicker') });
 
 ### field
 - Type: `Element`
-- Default: `null` 
+- Default: `null`
 
 Bind the datepicker to a form field
 
 ### secondField
 - Type: `Element`
-- Default: `null` 
+- Default: `null`
 
 If exists then end of date range will set here.
 
@@ -73,7 +73,7 @@ ISO day of the week (1: Monday, ..., 7: Sunday).
 
 ### parentEl
 - Type: `String`
-- Default: `body` 
+- Default: `body`
 
 Selector of the parent element that the date range picker will be added to, if not provided this will be 'body'.
 
@@ -106,6 +106,12 @@ Number of visible months.
 - Default: `2`
 
 Number of columns months.
+
+### preventCollapse
+- Type: `Boolean`
+- Default: `false`
+
+Prevent collapsing to single month on devices with screen smaller than 480px wide.
 
 ### singleDate
 - Type: `Boolean`
@@ -201,7 +207,7 @@ Calc date range in nights. (For hotels when last date doesn't include to range)
 - Type: `String`
 - Default: `auto`
 
-A space-separated string consisting of one or two of “left” or “right”, “top” or “bottom”, and “auto” (may be omitted); for example, “top left”, “bottom” (horizontal orientation will default to “auto”), “right” (vertical orientation will default to “auto”), “auto top”. 
+A space-separated string consisting of one or two of “left” or “right”, “top” or “bottom”, and “auto” (may be omitted); for example, “top left”, “bottom” (horizontal orientation will default to “auto”), “right” (vertical orientation will default to “auto”), “auto top”.
 
 ### disableWeekends
 - Type: `Boolean`
@@ -217,52 +223,52 @@ Show calendar inline. If `true` and `parentEl` is not provided then will use `pa
 
 ### dropdowns
 - Type: `Object|Boolean`
-- Default: 
+- Default:
 ```
-{ 
-    years: { 
-        min: 1900, 
-        max: null, 
-    }, 
-    months: true, 
+{
+    years: {
+        min: 1900,
+        max: null,
+    },
+    months: true,
 }
 ```
-Dropdown selections for years, months. Can be `false` for disable both dropdowns.  
-`years` _(Object|Boolean)_ - Object must contains `min` and `max` range of years or can be `false` for disable dropdown of years.  
-`months` _(Boolean)_ - `true/false` for enable/disable dropdown of months.  
+Dropdown selections for years, months. Can be `false` for disable both dropdowns.
+`years` _(Object|Boolean)_ - Object must contains `min` and `max` range of years or can be `false` for disable dropdown of years.
+`months` _(Boolean)_ - `true/false` for enable/disable dropdown of months.
 
 
 ### locale
 - Type: `Object`
-- Default: 
+- Default:
 ```
-{ 
-    buttons: { 
-        prev: '&leftarrow;', 
-        next: '&rightarrow;', 
-        close: '&times;', 
-        reset: 'Reset', 
+{
+    buttons: {
+        prev: '&leftarrow;',
+        next: '&rightarrow;',
+        close: '&times;',
+        reset: 'Reset',
         apply: 'Apply'
-    }, 
-    tooltip: { 
-        one: 'day',  
+    },
+    tooltip: {
+        one: 'day',
         other: 'days'
     },
     tooltipOnDisabled: null,
     pluralize: function(i, locale){
         if (typeof i === "string") i = parseInt(i, 10);
-        
+
         if (i === 1 && 'one' in locale) return locale.one;
         if ('other' in locale) return locale.other;
-        
+
         return '';
     }
 }
 ```
-`buttons` - Text for buttons  
-`tooltip` - Text for tooltip (one, few, many, other)  
-`tooltipOnDisabled` (String) - Show tooltip text on disabled dates. (Eg. «Already booked»)  
-`pluralize` (function) - Function for calc plural text. More examples for another locales on [betsol/numerous](https://github.com/betsol/numerous/tree/master/locales)  
+`buttons` - Text for buttons
+`tooltip` - Text for tooltip (one, few, many, other)
+`tooltipOnDisabled` (String) - Show tooltip text on disabled dates. (Eg. «Already booked»)
+`pluralize` (function) - Function for calc plural text. More examples for another locales on [betsol/numerous](https://github.com/betsol/numerous/tree/master/locales)
 
 ### onSelect
 - Type: `Function`
@@ -287,7 +293,7 @@ Callback function for when the picker is hidden.
 - Default: `null`
 
 Working when `disabledDatesInRange: false`
-Callback function for when user has select date range with disabled dates. 
+Callback function for when user has select date range with disabled dates.
 
 ## Methods
 
@@ -295,15 +301,15 @@ Callback function for when user has select date range with disabled dates.
 
 ### picker.setDate(date)
 
-Set date when singleDate is true. `date` can be moment, string, number, date.  
+Set date when singleDate is true. `date` can be moment, string, number, date.
 Eg. `picker.setDate(new Date());`
 
-  
+
 ### picker.setDateRange(start, end)
 
-Set date range. <code>start, end</code> can be moment, string, number, date. 
+Set date range. <code>start, end</code> can be moment, string, number, date.
 Eg. `picker.setDateRange(new Date(), moment().add(7, 'day'));`
-  
+
 
 ### picker.setDisableDates(array)
 
@@ -325,7 +331,7 @@ Return current start of date range as moment object.
 
 ### picker.toString('YYYY-MM-DD')
 
-Returns the date in a string format. 
+Returns the date in a string format.
 
 ### picker.reloadOptions({})
 
