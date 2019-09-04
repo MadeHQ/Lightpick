@@ -54,6 +54,7 @@
         tooltipNights: false,
         orientation: 'auto',
         disableWeekends: false,
+        dontRedrawAfterSelect: false,
         inline: false,
         dropdowns: {
             years: {
@@ -574,7 +575,7 @@
                                 self.hide();
                             }, 100);
                         }
-                        else if (!opts.singleDate || opts.inline) {
+                        else if (!opts.dontRedrawAfterSelect && (!opts.singleDate || opts.inline)) {
                             updateDates(self.el, opts);
                         }
                     }
