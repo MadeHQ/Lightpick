@@ -494,6 +494,10 @@
 
         self._onMouseDown = function(e)
         {
+            if (!e.cancelable) {
+                return;
+            }
+
             if (!self.isShowing) {
                 return;
             }
