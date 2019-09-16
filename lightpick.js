@@ -100,11 +100,11 @@
         var prevCalendar = opts.calendar[0] || null;
         var nextCalendar = opts.calendar[1] || null;
 
-        if (opts.minDate && prevCalendar.isBefore(opts.minDate, 'day')) {
+        if (opts.minDate && prevCalendar && prevCalendar.isBefore(opts.minDate, 'day')) {
             disablePrevious = true;
         }
 
-        if (opts.maxDate && nextCalendar.isAfter(opts.maxDate, 'day')) {
+        if (opts.maxDate && nextCalendar && nextCalendar.isAfter(opts.maxDate, 'day')) {
             disableNext = true;
         }
 
