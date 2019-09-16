@@ -94,10 +94,24 @@
 
     renderTopButtons = function(opts)
     {
+        var disablePrevious = false;
+        var disableNext = false;
+
+        var prevCalendar = opts.calendar[0] || null;
+        var nextCalendar = opts.calendar[1] || null;
+
+        if (opts.minDate && prevCalendar.isBefore(opts.minDate, 'day')) {
+            disablePrevious = true;
+        }
+
+        if (opts.maxDate && nextCalendar.isAfter(opts.maxDate, 'day')) {
+            disableNext = true;
+        }
+
         return '<div class="lightpick__toolbar">'
             + ''
-            + '<button type="button" class="lightpick__previous-action">' + opts.locale.buttons.prev + '</button>'
-            + '<button type="button" class="lightpick__next-action">' + opts.locale.buttons.next + '</button>'
+            + '<button type="button" class="lightpick__previous-action" ' + (disablePrevious ? 'disabled' : '') + '>' + opts.locale.buttons.prev + '</button>'
+            + '<button type="button" class="lightpick__next-action" ' + (disableNext ? 'disabled' : '') + '>' + opts.locale.buttons.next + '</button>'
             + (!opts.autoclose && !opts.inline ? '<button type="button" class="lightpick__close-action">' + opts.locale.buttons.close + '</button>'  : '')
             + '</div>';
     },
